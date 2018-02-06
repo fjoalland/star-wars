@@ -7,12 +7,14 @@
 <ion-content padding>
   <ion-content class="card-background-page">
 
-    <ion-card>
-      <img src="https://www.bedetheque.com/media/Couvertures/StarWarsEpisode1_23052002.jpg"/>
-      <div class="card-title">Episode 1</div>
-      <div class="card-subtitle">1977-05-25</div>
+    <ion-card  *ngFor="let film of results">
+      <ion-card-header>
+        {{ film.title }}
+      </ion-card-header>
+      <ion-card-content>
+      {{ film.created }}
+      </ion-card-content>
     </ion-card>
-
 
 
   </ion-content>
