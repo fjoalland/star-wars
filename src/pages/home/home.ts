@@ -14,7 +14,7 @@ export class HomePage {
 
     this.http.get('https://swapi.co/api/films/').subscribe((data) => {
       this.results = data['results'];
-    
+
       console.log(this.results);
     });
   }
