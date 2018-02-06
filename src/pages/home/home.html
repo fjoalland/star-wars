@@ -8,11 +8,12 @@
   <ion-content class="card-background-page">
 
     <ion-card  *ngFor="let film of results">
+      <img src="assets/imgs/film{{film.episode_id}}.jpg"/>
       <ion-card-header>
         {{ film.title }}
       </ion-card-header>
       <ion-card-content>
-      {{ film.created }}
+      {{ film.created | date: 'dd/mm/yyyy' }}
       </ion-card-content>
     </ion-card>
 
