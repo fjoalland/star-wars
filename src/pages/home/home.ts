@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -7,13 +8,15 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  results: string;
+  constructor(public navCtrl: NavController, private http: HttpClient) {
 
 
-
-  constructor(public navCtrl: NavController) {
-    this
+    this.http.get('https://swapi.co/api/films/').subscribe((data) => {
+      this.results = data['results'];
+    
+      console.log(this.results);
+    });
   }
-
-
 
 }
