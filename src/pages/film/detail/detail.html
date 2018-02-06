@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ film.title}}
+    </ion-title>
+  </ion-navbar>
+
+
+  <img src="../assets/imgs/film{{film.episode_id}}.jpg" (click)="test(film)"/>
+
+</ion-header>
+<ion-content padding class="popover-page">
+  <div class="text-to-change">
+    <div>{{ film.opening_crawl }}</div>
+  </div>
+</ion-content>
