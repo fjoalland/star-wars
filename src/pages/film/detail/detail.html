@@ -6,12 +6,23 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="popover-page">
 
-  <ion-img height="100%" width="100%" src="assets/imgs/film{{film.episode_id}}.jpg">
-  </ion-img>
-  <ion-item>
-    <ion-label>Description</ion-label>
-  </ion-item>
-  {{ film.opening_crawl }}
+  <img src="../assets/imgs/film{{film.episode_id}}.jpg"/>
+
+  <div class="text-to-change">
+    <div>{{ film.opening_crawl }}</div>
+  </div>
+
+  <ion-navbar>
+    <ion-title>Characters</ion-title>
+  </ion-navbar>
+  <ion-list>
+    <ion-item *ngFor="let character of characters">
+      <ion-avatar item-start>
+        <img src="assets/imgs/luke.jpg">
+      </ion-avatar>
+      <h2>{{ character.name}}</h2>
+    </ion-item>
+  </ion-list>
 </ion-content>
