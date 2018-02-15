@@ -28,7 +28,7 @@ export class FilmPage {
     });*/
   }
 
-  test(onefilm) {
+  displaydetail(onefilm) {
     console.log('test');
     this.navParams.data.film = onefilm;
     this.navCtrl.push(FilmDetailPage, this.navParams);

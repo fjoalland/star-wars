@@ -7,7 +7,7 @@
   <ion-content  padding class="card-background-page">
 
     <ion-card  *ngFor="let film of results">
-      <img src="assets/imgs/film{{film.episode_id}}.jpg" (click)="test(film)"/>
+      <img src="assets/imgs/film{{film.episode_id}}.jpg" (click)="displaydetail(film)"/>
       <ion-card-header>
         {{ film.title }}
       </ion-card-header>

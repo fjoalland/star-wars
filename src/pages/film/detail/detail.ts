@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LoadingController, NavController, NavParams} from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
+import {SwapiProvider} from "../../../providers/swapi/swapi";
 
 @Component({
   selector: 'page-about',
@@ -11,34 +12,25 @@ export class FilmDetailPage {
   public film;
   public characters;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public loadingCtrl: LoadingController, public swapi: SwapiProvider) {
+
+    // On affiche le loader
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
     loader.present();
 
+    // On recupere les details du film
     this.film = this.navParams.get('film');
-    this.characters = new Array();
+    console.log(this.film['title'])
+    this.swapi.getCharacters(this.film);
+    this.swapi.filmCharacters.subscribe((characters) => {
+      this.characters = characters;
+      console.log(characters)
+      loader.dismiss();
+    })
 
-    let urlCharacters = this.film['characters'];
-    urlCharacters.forEach((url) => {
 
-      // Permet de recuperer l'ID du dernière URL
-      let lastUrl = this.film['characters'][this.film['characters'].length- 1];
-
-      this.http.get(url).subscribe(character => {
-        this.characters.push(character);
-      });
-
-      // On dissimule de loader
-      if(url === lastUrl){
-        loader.dismiss();
-      }
-
-    });
-
-    console.log(this.characters);
-    console.log("FilmDetailPage", this.film);
   }
 
 }
